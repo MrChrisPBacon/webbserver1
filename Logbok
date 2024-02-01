@@ -1,2 +1,6 @@
 Ide: Loggin till chattappen
 
+30/1
+Har ändar indexfilen så den skickar inloggningsuppgifter till servern som sedan verifieras mot en local dict. 
+Om inloggningen är godkänd vidarbefodras användaren till home.html där man kan skicka och läsa meddelanden.
+Nästa lektion ska jag skapa ett userID som kommer användas för att kunna ladda in och skicka meddelanden.
