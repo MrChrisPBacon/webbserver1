@@ -5,9 +5,14 @@ Har ändar indexfilen så den skickar inloggningsuppgifter till servern som seda
 Om inloggningen är godkänd vidarbefodras användaren till home.html där man kan skicka och läsa meddelanden.
 Nästa lektion ska jag skapa ett userID som kommer användas för att kunna ladda in och skicka meddelanden.
 
-2/1
+1/2
 Den här lektionen har jag skapat ett userID som skickas tillbaka med verifieringen av inlogget. userID verifieras
 sedan mot servern varje gång man vill skicka ett meddelande eller läsa in meddelande. Jag har även bytt ut så 
 meddelanden skickas med post och laddas in med .done() istället för get vilket begränasr åtkomsten till bara dom
 som har ett giligt userID. Nästa lektion ska jag spara användare i mongoDB och jag ska göra det möjligt att ta 
 lägga till eller ta bort användare. 
+
+2/2
+Den här lektionen har jag lagt till så att man kan logga ut. Jag har även lagt till error handling om man loggar in 
+eller registrerar konton fel. Jag har bestämt att inte spara konton i mongoDB av säkerhetsskäl. Jag har utöver det 
+städat upp i koden. 
