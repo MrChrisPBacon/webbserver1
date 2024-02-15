@@ -1,1 +1,72 @@
+"SQL1"
+CREATE SCHEMA mindatabas;
+
+"SQL2"
+CREATE TABLE personal
+(
+personalID INT NOT NULL AUTO_INCREMENT, 
+fornamn VARCHAR(15),
+efternamn VARCHAR(15),
+lon INT,
+kontor VARCHAR(15),
+PRIMARY KEY (personalID)
+)
+  
+"SQL3"
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Henrik", "Wred", 15, "Uppsala");
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Henrik", "Bred", 20, "Uppsala");
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Benrik", "Wred", 25, "Uppsala");
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Henrik", "Wred", 15, "Stockholm");
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Henrik", "Bred", 20, "Stockholm");
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Henrik", "Wred", 15, "Malmö");
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Henrik", "Bred", 20, "Malmö");
+
+"SQL4"
+SELECT * FROM mindatabas.personal WHERE kontor = "UPPSALA";
+
+"SQL5"
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Henrik", "Wred", 15, "Luleå");
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Henrik", "Bred", 20, "Luleå");
+INSERT INTO mindatabas.personal (fornamn, efternamn, lon, kontor) VALUES ("Benrik", "Wred", 25, "Luleå");
+
+"SQL6"
+SELECT * FROM mindatabas.personal WHERE lon > 30000;
+
+"SQL7"
+SET SQL_SAFE_UPDATES = 0;
+UPDATE personal
+SET kontor = 'Helsingborg'
+WHERE kontor = 'Malmö'
+
+"SQL8"
+SELECT * FROM mindatabas.personal WHERE kontor = 'Uppsala' or kontor = 'Stockholm';
+
+"SQL9"
+DELETE FROM personal
+WHERE kontor = 'Stockholm'
+
+"SQL10"
+SELECT * FROM mindatabas.personal
+ORDER BY kontor
+  
+"SQL11"
+SELECT * FROM mindatabas.personal
+ORDER BY efternamn DESC
+
+"SQL12"
+"SQL13"
+"SQL14"
+"SQL15"
+"SQL16"
+"SQL17"
+"SQL18"
+"SQL19"
+"SQL20"
+"SQL21"
+"SQL22"
+"SQL23"
+"SQL24"
+"SQL25"
+"SQL26"
+"SQL27"
 
