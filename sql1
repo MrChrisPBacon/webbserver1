@@ -54,7 +54,10 @@ SELECT * FROM mindatabas.personal
 ORDER BY efternamn DESC
 
 "SQL12"
+SELECT DISTINCT kontor FROM mindatabas.personal
+
 "SQL13"
+
 "SQL14"
 "SQL15"
 "SQL16"
