@@ -80,7 +80,28 @@ SELECT
 SELECT COUNT(fornamn) FROM mindatabas.personal WHERE kontor="Uppsala"
 
 "SQL20"
+CREATE TABLE kontor
+(
+kontorID INT NOT NULL AUTO_INCREMENT, 
+kontor VARCHAR(15),
+PRIMARY KEY (kontorID)
+)
+ALTER TABLE personal
+ADD COLUMN kontorID int AFTER kontor
+UPDATE personal SET kontorID=1 WHERE kontor="Uppsala"
+UPDATE personal SET kontorID=2 WHERE kontor="Helsingborg"
+UPDATE personal SET kontorID=3 WHERE kontor="Luleå"
+INSERT INTO mindatabas.kontor (kontor) VALUES ("Uppsala")
+INSERT INTO mindatabas.kontor (kontor) VALUES ("Helsingborg")
+INSERT INTO mindatabas.kontor (kontor) VALUES ("Luleå")
+ALTER TABLE personal
+DROP COLUMN kontor
+
 "SQL21"
+SELECT personal.personalID, personal.fornamn, personal.efternamn, personal.lon, kontor.kontor FROM personal
+INNER JOIN kontor
+ON personal.kontorID = kontor.kontorID
+
 "SQL22"
 "SQL23"
 "SQL24"
