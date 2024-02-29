@@ -59,11 +59,26 @@ SELECT DISTINCT kontor FROM mindatabas.personal
 "SQL13"
 
 "SQL14"
+SELECT COUNT(fornamn) AS "Antal Anställda" FROM mindatabas.personal	
+
 "SQL15"
+SELECT AVG(lon) AS "Avg Lön" FROM mindatabas.personal	
+
 "SQL16"
+SELECT MAX(lon) FROM mindatabas.personal
+
 "SQL17"
+SELECT MIN(lon) FROM mindatabas.personal
+
 "SQL18"
+SELECT 
+(SELECT AVG(lon) FROM mindatabas.personal WHERE kontor="Uppsala") AS "Uppsala",
+(SELECT AVG(lon) FROM mindatabas.personal WHERE kontor="Helsingborg") AS "Helsingborg",
+(SELECT AVG(lon) FROM mindatabas.personal WHERE kontor="Luleå") AS "Luleå" 
+
 "SQL19"
+SELECT COUNT(fornamn) FROM mindatabas.personal WHERE kontor="Uppsala"
+
 "SQL20"
 "SQL21"
 "SQL22"
