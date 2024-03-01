@@ -57,6 +57,7 @@ ORDER BY efternamn DESC
 SELECT DISTINCT kontor FROM mindatabas.personal
 
 "SQL13"
+https://github.com/MrChrisPBacon/webbserver1/blob/16c305105d09af4072fb194bc205196c4b5bb32d/image.png
 
 "SQL14"
 SELECT COUNT(fornamn) AS "Antal Anställda" FROM mindatabas.personal	
