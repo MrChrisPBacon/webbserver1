@@ -103,9 +103,35 @@ INNER JOIN kontor
 ON personal.kontorID = kontor.kontorID
 
 "SQL22"
+CREATE TABLE kommentar
+(
+kommentarID INT NOT NULL AUTO_INCREMENT, 
+kommentar VARCHAR(100),
+personalID INT,
+PRIMARY KEY (kommentarID),
+FOREIGN KEY (personalID) REFERENCES personal(personalID)
+)
+INSERT INTO mindatabas.kommentar (kommentar, personalID) VALUES ("Effektiv", 1)
+INSERT INTO mindatabas.kommentar (kommentar, personalID) VALUES ("Inte Effektiv", 2)
+
 "SQL23"
+SELECT personal.personalID, personal.fornamn, personal.efternamn, kommentar.kommentar FROM personal
+INNER JOIN kommentar
+ON personal.personalID = kommentar.kommentarID
+
 "SQL24"
+SELECT * FROM personal
+WHERE lon = (SELECT MAX(lon) FROM personal);
+
 "SQL25"
+SELECT * FROM personal
+WHERE lon = (SELECT MIN(lon) FROM personal);
+
 "SQL26"
+SELECT * FROM personal
+WHERE lon < (SELECT AVG(lon) FROM personal);
+
 "SQL27"
+SELECT * FROM personal
+WHERE lon > (SELECT AVG(lon) FROM personal);
 
