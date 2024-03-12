@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrera dig</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    
+     <nav>
+        <h4>Min fina sida</h4>
+        <ul>
+            <li><a href="/">Hem</a></li>
+            <li><a href="/login">Logga in</a></li>
+            <li><a href="/register">Registrera</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="card" style="width: 18rem;">            
+            <div class="card-header">Registrera dig</div>    
+            <div class="card-body">
+                <form action="/auth/register" method="POST" onsubmit="return verify()">
+                    <div class="mb-3">
+                        <label for="name-reg" class="form-label">Namn:</label>
+                        <input type="text" class="form-control" id="name-reg" name="name">                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="email-reg" class="form-label">E-post:</label>
+                        <input type="text" class="form-control" id="email-reg" name="email">                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-reg" class="form-label">Lösenord:</label>
+                        <input type="password" class="form-control" id="password-reg" name="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-conf-reg" class="form-label">Bekräfta lösenord:</label>
+                        <input type="password" class="form-control" id="password-conf-reg" name="password_confirm">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Registrera dig</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{#if message }}
+        <h4 class="alert alert-danger mt-4">{{message}}</h4>
+    {{/if}}
+<script>
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //Lånad från stackoverflow
+    const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/; //Lånad från stackoverflow
+
+    //Renderar ett nytt meddelande genom att skapa ett nytt element med samma egensakper som message (lånad från Simon)
+    renderMessage = (str) => {
+        document.querySelectorAll(".alert").forEach(e => e.remove());
+        const err = document.createElement("h4");
+        err.innerText = str;
+        err.classList.add("alert", "alert-danger", "mt-4");
+        document.body.appendChild(err)
+    }
+    verify = () => {
+        const name = document.getElementById("name-reg").value
+        const email = document.getElementById("email-reg").value
+        const password = document.getElementById("password-reg").value
+        const password_conf = document.getElementById("password-conf-reg").value
+
+        //Kollar så att alla fält är ifyllda
+        if (name != "" && email != "" && password != "" && password == password_conf) return true
+        //Kollar så att lösenordet stämmer överens med regexen
+        else if (!password.match(passwordRegex)){
+            renderMessage("Lösenordet måste innehålla minst 8 bokstäver, 1 stor bokstav, 1 siffra och ett tecken")
+            return false
+        }
+        //Kollar så att de båda lösenorden är lika  
+        else if (password != password_conf) {
+            renderMessage("Lösenord matchar inte")
+            return false
+        }
+
+        //Kollar så att eposten matchar regexen
+        else if (!email.match(emailRegex)) {
+            renderMessage("Eposten är felaktig")
+            return false
+        }
+        else return false
+    }
+</script>
+</body>
+</html>
